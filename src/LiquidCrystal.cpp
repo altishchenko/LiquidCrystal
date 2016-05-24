@@ -121,32 +121,32 @@ void LiquidCrystal::begin(uint8_t cols, uint8_t lines, uint8_t dotsize) {
 
     // we start in 8bit mode, try to set 4 bit mode
     write4bits(0x03);
-    delayMicroseconds(4500); // wait min 4.1ms
+    delayMicroseconds(50);
 
     // second try
     write4bits(0x03);
-    delayMicroseconds(4500); // wait min 4.1ms
+    delayMicroseconds(50);
     
     // third go!
     write4bits(0x03); 
-    delayMicroseconds(150);
+    delayMicroseconds(50);
 
     // finally, set to 4-bit interface
     write4bits(0x02); 
+    delayMicroseconds(50);
   } else {
     // this is according to the hitachi HD44780 datasheet
     // page 45 figure 23
 
     // Send function set command sequence
-    command(LCD_FUNCTIONSET | _displayfunction);
-    delayMicroseconds(4500);  // wait more than 4.1ms
+    command(LCD_FUNCTIONSET | LCD_8BITMODE);
+    delayMicroseconds(50);  // wait more than 4.1ms
 
-    // second try
-    command(LCD_FUNCTIONSET | _displayfunction);
-    delayMicroseconds(150);
+    command(LCD_FUNCTIONSET | LCD_8BITMODE);
+    delayMicroseconds(50);
 
-    // third go
-    command(LCD_FUNCTIONSET | _displayfunction);
+    command(LCD_FUNCTIONSET | LCD_8BITMODE);
+    delayMicroseconds(50);
   }
 
   // finally, set # lines, font size, etc.
