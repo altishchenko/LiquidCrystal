@@ -348,5 +348,5 @@ void usdelay(unsigned long us) {
   unsigned long stop = micros()+us;
   do {
     yield();
-  } while (micros() < stop)
+  } while (micros() < stop);
 }
